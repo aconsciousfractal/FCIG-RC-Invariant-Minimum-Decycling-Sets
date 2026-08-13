@@ -1,0 +1,54 @@
+\section{The half-plane coboundary}
+\label{sec:coboundary}
+
+Let $m=\ind_M$ for the tie-symmetrized selector of
+Section~\ref{sec:seed}.  We use
+\[
+  \ind_{\RC(M)}(w):=m(\RC(w)),
+\]
+which agrees with set-image notation because reverse complement is an
+involution.
+
+\begin{theorem}[Exact reverse-complement defect]
+\label{thm:coboundary}
+For every length-$k$ word $w$,
+\begin{equation}
+  m(\RC w)-m(w)
+   =\chi(t(w))-\chi(h(w))
+   =(\nabla\chi)(w).
+  \label{eq:coboundary}
+\end{equation}
+Equivalently, $\ind_{\RC(M)}-\ind_M=\nabla\chi$.
+\end{theorem}
+
+\begin{proof}
+Set
+\[
+  A=\operatorname{Im}P(w),
+  \qquad B=\operatorname{Im}P(Rw).
+\]
+Lemma~\ref{lem:covariance} sends the ordered imaginary coordinates of
+$\RC(w)$ to $(B,A)$.  If $A$ and $B$ are nonzero, the selector rule gives
+\[
+  m(\RC w)-m(w)
+   =\ind[B<0<A]-\ind[A<0<B]
+   =\ind[A>0]-\ind[B>0].
+\]
+
+It remains to check the rays.  If $A=0$, write $P(w)=r\in\R$.  Then
+$B=-r\sin(2\pi/k)$.  For $r<0$ both sides are $-1$, while for $r>0$ both
+are zero.  If $B=0$, write $P(Rw)=r\in\R$.  For $r>0$ both sides are $+1$,
+while for $r<0$ both are zero.  When $k>2$, $A=B=0$ with $P(w)\neq0$ is
+impossible because $P(Rw)=\zeta^{-1}P(w)$ and $\zeta$ is not real.  In the
+zero sector, the chosen ties are RC invariant, so the left side vanishes;
+both lower imaginary coordinates vanish as well.
+
+Finally Lemma~\ref{lem:covariance} identifies the last sign difference with
+$\chi(t(w))-\chi(h(w))$, with the gradient convention
+\eqref{eq:gradient}.
+\end{proof}
+
+Equation~\eqref{eq:coboundary} is the bridge between the cyclotomic seed and
+an exact legal move path.  Its right-hand side is not a heuristic score: it
+is the literal indicator defect, edge by edge.  The use of an \emph{open}
+upper half-plane and the chosen negative-ray convention are load-bearing.

@@ -1,0 +1,50 @@
+\section{The binary parity theorem}
+\label{sec:parity-proof}
+
+The even base case is immediate.  At $k=2$ the set
+\[
+  M_2=\{00,01,11\}
+\]
+selects one word from each of the three PCRs, is RC invariant, and leaves
+only the vertex $10$, with no residual loop.  It is therefore an ordinary
+MDS.
+
+\begin{proof}[Proof of Theorem~\ref{thm:parity}]
+For even $k\geq4$, Theorem~\ref{thm:even} supplies an RC-invariant ordinary
+MDS; the preceding paragraph covers $k=2$.  For odd $k\geq3$,
+Theorem~\ref{thm:odd}, specialized to the binary complement, rules out an
+RC-invariant decycling set at the ordinary minimum.  These cases exhaust the
+stated domain.
+\end{proof}
+
+The logical dependencies are worth making explicit:
+\[
+\begin{array}{c}
+\text{ordinary PCR lower bound and MDS construction}\quad+
+\quad\text{valid $F$-move preservation}
+\\[2mm]
+\Downarrow
+\\[-1mm]
+\text{arbitrary-zero-tie seed}
+\;\Longrightarrow\;
+\text{exact half-plane coboundary}
+\;\Longrightarrow\;
+\text{finite legal defect descent}
+\\[2mm]
+\Downarrow
+\\[-1mm]
+\text{all even binary orders, combined independently with the odd bridge.}
+\end{array}
+\]
+No component-count conjecture, solver outcome, bounded-order pattern, or
+connectivity claim enters this chain.
+
+It is useful to name the quantity separated by the theorem.  Let
+$\tau_{\RC}(k)$ denote the minimum cardinality of an RC-invariant decycling
+set in $B(2,k)$ and define the \emph{symmetry premium}
+\[
+  \Delta_2(k)=\tau_{\RC}(k)-N_2(k).
+\]
+The theorem says exactly that $\Delta_2(k)=0$ for even $k$, whereas
+Theorem~\ref{thm:odd} gives $\Delta_2(k)\geq2$ for odd $k$.  No exact formula
+for the odd premium is asserted.

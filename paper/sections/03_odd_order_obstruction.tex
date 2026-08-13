@@ -1,0 +1,56 @@
+\section{The odd-order obstruction}
+\label{sec:odd}
+
+The negative direction is not specific to the binary alphabet.
+
+\begin{theorem}[Odd obstruction]
+\label{thm:odd}
+Let $\A$ be a finite alphabet with a fixed-point-free complement.  For every
+odd $k=2m+1\geq3$, no reverse-complement-invariant decycling set in
+$B(q,k)$ has cardinality $N_q(k)$.  Its cardinality exceeds $N_q(k)$ by at
+least two.
+\end{theorem}
+
+\begin{proof}
+Fix a complementary pair $a,\bar a$ and define two length-$2m$ lower states
+\[
+  f_m=(a\bar a)^m,
+  \qquad
+  g_m=(\bar a a)^m.
+\]
+Both are fixed by reverse complement.  Consider the length-$k$ word
+\[
+  w_m=(a\bar a)^m\bar a.
+\]
+It contains $m$ copies of $a$ and $m+1$ copies of $\bar a$.  If it were a
+proper $r$-fold power, then $r>1$ would divide both counts, contradicting
+$\gcd(m,m+1)=1$.  Thus its PCR has full length $k$.
+
+In the lower-state graph this PCR contains the direct arc $g_m\to f_m$ and,
+using all its other $k-1$ arcs, a directed path from $f_m$ to $g_m$.
+Any decycling set of cardinality $N_q(k)$ selects exactly one arc of this
+PCR.  Deleting the direct arc leaves the long path; deleting any other arc
+leaves the direct path.  Hence one of the two endpoint-to-endpoint
+directions remains.
+
+Suppose the deletion set is reverse-complement invariant.  Since both
+endpoints are fixed and reverse complement reverses arrows, the surviving
+path has a reverse-complement image directed from the other endpoint back to
+the first.  Their concatenation is a nonempty closed directed walk, which
+contains a directed cycle.  This contradicts decycling.
+
+At odd length no word is reverse-complement fixed, so every invariant set has
+even cardinality.  Reverse complement also acts freely on PCRs.  Indeed, if
+an odd-period PCR were setwise stable, then for some word $w$ of odd minimal
+period $d$ and some $s\in\Z/d\Z$ we would have $\RC(w)=R^s w$.  On rotation
+indices reverse complement induces the reflection
+$r\mapsto s-r$ modulo $d$.  (The closely related position-index formula is
+$i\mapsto s-1-i$.)  Every reflection of an odd cycle has a fixed
+index, which would force the corresponding letter of $w$ to equal its own
+complement, contrary to the fixed-point-free hypothesis.  Thus PCRs occur in
+free reverse-complement pairs, so $N_q(k)$ is even.  Strict excess is
+therefore at least two.
+\end{proof}
+
+The proof does not determine the exact odd excess.  In particular, no
+formula inferred from small odd orders is needed anywhere in this paper.

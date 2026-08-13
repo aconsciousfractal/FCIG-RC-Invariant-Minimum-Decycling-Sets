@@ -1,0 +1,106 @@
+\section{Legal defect descent and even existence}
+\label{sec:even}
+
+We now convert the exact gradient defect into a finite sequence of valid
+$F$-moves.  Reverse complement carries an ordinary MDS to an ordinary MDS,
+because it reverses directed cycles bijectively.
+
+\begin{lemma}[Positive-potential firing]
+\label{lem:positive-firing}
+Let $A$ and $N$ be ordinary MDSs and suppose
+\[
+  \ind_N-\ind_A=\nabla q
+\]
+for an integral lower-state potential $q\geq0$ with minimum zero.  If
+$A\neq N$, some lower state $u$ with $q(u)>0$ admits a valid $F$-move from
+$A$.
+\end{lemma}
+
+\begin{proof}
+Assume otherwise.  At every positive state $u$, failure of the source
+condition supplies an incoming nonloop residual arc $v\to u$; a residual
+loop is already impossible because $A$ is decycling.  Since that arc is not
+in $A$,
+\[
+  \ind_N(v\to u)=q(v)-q(u)\in\{0,1\},
+\]
+so $q(v)\geq q(u)>0$.  Repeating the predecessor choice in the finite set of
+positive states eventually creates a directed cycle entirely outside $A$,
+contradicting that $A$ is a decycling set.
+\end{proof}
+
+\begin{lemma}[Defect-paired update]
+\label{lem:paired-update}
+Suppose the current ordinary MDS $A$ satisfies
+\[
+  \ind_{\RC(A)}-\ind_A=\nabla q,
+  \qquad q\geq0,
+  \qquad q\circ\RC=q,
+\]
+with minimum zero.  If $A$ is not RC invariant, let $u$ be an enabled
+positive state from Lemma~\ref{lem:positive-firing}, and fire $u$.  The new
+ordinary MDS $A'$ satisfies
+\begin{equation}
+  \ind_{\RC(A')}-\ind_{A'}
+   =\nabla\bigl(q-\ind_u-\ind_{\RC(u)}\bigr).
+  \label{eq:paired-update}
+\end{equation}
+The new potential is nonnegative, RC invariant, has minimum zero, and its
+coordinate sum is two smaller.
+\end{lemma}
+
+\begin{proof}
+A valid firing changes $\ind_A$ by $\nabla\ind_u$ and preserves ordinary-MDS
+status.  Since reverse complement reverses lower arcs,
+\[
+  \RC(\nabla\ind_u)=-\nabla\ind_{\RC(u)}.
+\]
+Subtracting the update of $A$ from the update of its RC image gives
+\eqref{eq:paired-update}.  Positivity is paired because $q\circ\RC=q$.
+The lower words have odd length $k-1$, so none is RC fixed; $u$ and
+$\RC(u)$ are distinct positive states.  Subtracting one at those two
+coordinates preserves nonnegativity and invariance.  A previously zero
+coordinate is untouched, so the minimum remains zero.
+\end{proof}
+
+\begin{theorem}[Even existence]
+\label{thm:even}
+For every even $k\geq4$, $B(2,k)$ has an RC-invariant ordinary MDS.
+\end{theorem}
+
+\begin{proof}
+Start from the tie-symmetrized ordinary MDS $M$ constructed in
+Section~\ref{sec:seed}.  Theorem~\ref{thm:coboundary} supplies the initial
+potential $q=\chi$, which is binary, nonnegative, RC invariant, and has
+minimum zero.
+
+If the current set is not RC invariant, apply
+Lemmas~\ref{lem:positive-firing} and~\ref{lem:paired-update}.  Every step
+preserves ordinary-MDS status and lowers the nonnegative integer
+$\sum_uq(u)$ by two.  Hence the process terminates.  At termination the set
+must be RC invariant: otherwise another positive firing exists.  Equivalently,
+if the terminal defect were zero while $q$ were nonzero, then $\nabla q=0$;
+connectedness of the lower binary de Bruijn graph would make $q$ constant,
+and its retained minimum zero would force $q=0$.  Thus the terminal ordinary
+MDS is literally fixed by reverse complement.
+\end{proof}
+
+Only the selected state $u$ is fired at each step.  The word ``paired'' in
+Lemma~\ref{lem:paired-update} refers to the forced two-coordinate update of
+the RC defect potential, not to an unproved simultaneous-move operation.
+
+For clarity, the constructive content of the proof can be read as the
+following exact procedure.
+\begin{enumerate}
+  \item Construct the Mykkeltveit seed and resolve its zero PCRs by the
+  RC-equivariant tie rule of Section~\ref{sec:seed}.
+  \item Compute the binary potential $q=\chi$ from the open half-plane.
+  \item While $q\neq0$, choose any positive lower state enabled by
+  Lemma~\ref{lem:positive-firing}, fire that single state, and replace
+  $q$ by $q-\ind_u-\ind_{\RC(u)}$.
+  \item Return the terminal selected set.
+\end{enumerate}
+\par\smallskip\noindent
+The proof establishes existence of a choice at every iteration and exact
+termination.  This description is not a claim of an optimized implementation
+or of a particular complexity bound.

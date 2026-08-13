@@ -1,0 +1,135 @@
+\section{The cyclotomic seed and zero-sector ties}
+\label{sec:seed}
+
+For the remainder of the proof, let $k\geq4$ be even and specialize to the
+binary alphabet.  Put $\zeta=e^{2\pi i/k}$.  For
+$w=x_0\cdots x_{k-1}$ define
+\[
+  P(w)=\sum_{j=0}^{k-1}x_j\zeta^{j+1},
+  \qquad
+  W(w)=\sum_{j=0}^{k-1}x_j.
+\]
+On a lower word $u=u_0\cdots u_{k-2}$ define
+\[
+  \lambda(u)=\sum_{j=0}^{k-2}u_j
+    \sin\!\left(\frac{2\pi(j+1)}k\right),
+  \qquad
+  \chi(u)=\ind[\lambda(u)>0].
+\]
+
+\begin{lemma}[Covariance]
+\label{lem:covariance}
+For every length-$k$ word $w$,
+\[
+  P(Rw)=\zeta^{-1}P(w),\qquad
+  P(\RC w)=-\overline{P(Rw)},\qquad
+  P(R\RC w)=-\overline{P(w)}.
+\]
+Moreover
+\[
+  \operatorname{Im}P(w)=\lambda(t(w)),\qquad
+  \operatorname{Im}P(Rw)=\lambda(h(w)),
+\]
+and $\lambda(\RC u)=\lambda(u)$ on lower words.
+\end{lemma}
+
+\begin{proof}
+The rotation identity follows by reindexing and using $\zeta^k=1$.
+For reverse complement, the sum of all $k$th roots of unity is zero, so
+\[
+  P(\RC w)
+  =\sum_i(1-x_{k-1-i})\zeta^{i+1}
+  =-\sum_jx_j\zeta^{-j}
+  =-\overline{P(Rw)}.
+\]
+Rotating once gives the third identity.  The omitted last bit of $t(w)$
+would multiply $\zeta^k=1$ and contributes no imaginary part; the head
+identity follows by applying the same observation to $Rw$.  Finally,
+reindexing the lower sum and using
+$\sin(2\pi(k-r)/k)=-\sin(2\pi r/k)$ proves lower-word invariance.
+\end{proof}
+
+\subsection{The selector}
+
+On each PCR with $P\neq0$, select one word by the following rule:
+\begin{enumerate}
+  \item select the point on the negative real axis, if it occurs;
+  \item otherwise select the unique $w$ such that
+  $\operatorname{Im}P(w)<0<\operatorname{Im}P(Rw)$.
+\end{enumerate}
+On a PCR where $P$ vanishes identically, select an arbitrary representative
+for now.  Denote the resulting one-per-PCR set by $M$.
+
+\begin{lemma}[Full period and uniqueness]
+\label{lem:selector-unique}
+Every nonzero embedded PCR has full period $k$, and the selector above is
+unique.
+\end{lemma}
+
+\begin{proof}
+If a word in a nonzero PCR had period $d<k$, then
+$P(R^dw)=\zeta^{-d}P(w)=P(w)$ would force $P(w)=0$.  The nonzero rotations
+therefore form the $k$ vertices of a regular polygon.  Since $k$ is even,
+real vertices occur in antipodal pairs.  If the negative ray is absent,
+there is no real vertex at all, and clockwise rotation gives exactly one
+strict crossing from the lower to the upper half-plane.  Otherwise the
+negative-ray vertex is unique.
+\end{proof}
+
+The zero sector must be handled explicitly: choosing its representatives
+carelessly could appear to affect cycles.  The next theorem shows that it
+does not.
+
+\begin{theorem}[Arbitrary-zero-tie acyclicity]
+\label{thm:arbitrary-zero}
+For every choice of representatives on zero-embedding PCRs, the set $M$ is
+an ordinary MDS.
+\end{theorem}
+
+\begin{proof}
+Define $Q(w)=P(w)-W(w)$.  If
+$y=x_1\cdots x_{k-1}a$ follows $w=x_0\cdots x_{k-1}$ and
+$\delta=a-x_0$, then
+\[
+  P(y)=\zeta^{-1}P(w)+\delta,
+  \quad W(y)=W(w)+\delta,
+  \quad Q(y)=-W(w)+\zeta^{-1}P(w).
+\]
+Thus $Q(y)$ is obtained by rotating $Q(w)$ clockwise by $2\pi/k$ about the
+real center $-W(w)$.
+
+A residual path cannot move from $\operatorname{Im}P\leq0$ to
+$\operatorname{Im}P>0$: a strict lower-to-upper crossing is selected, and a
+departure from the negative ray is selected.  From the positive ray the
+clockwise rotation enters the lower half-plane; from the origin the next
+imaginary coordinate is zero.  A residual directed cycle must therefore lie
+entirely in the open upper half-plane or in the closed lower half-plane.
+
+Write $\theta=2\pi/k$ and $P(w)=\rho e^{i\phi}\neq0$.  Along a residual
+edge within the upper region,
+\[
+  \operatorname{Re}Q(y)-\operatorname{Re}Q(w)
+  =2\rho\sin(\theta/2)\sin(\phi-\theta/2)>0.
+\]
+Along a residual edge within the closed lower region the same quantity is
+strictly negative: the negative-ray starting point was selected, and the
+remaining angular interval is $\pi+\theta\leq\phi\leq2\pi$.  Hence neither
+region contains a residual cycle unless every edge of that cycle begins at
+$P(w)=0$.
+
+If consecutive labels $w$ and $y$ both have zero embedding, then
+$P(y)=a-x_0$ forces $a=x_0$.  Every step is a pure rotation.  Such a cycle
+is exactly a zero-embedding PCR, from which one word was selected.  This is
+again impossible in the residual.  Therefore the residual lower graph is a
+DAG.  Since $M$ selects one word from every PCR, it attains the lower bound
+$N_2(k)$ and is an ordinary MDS.
+\end{proof}
+
+\subsection{Equivariant zero ties}
+
+Lemma~\ref{lem:covariance} shows that reverse complement permutes the
+zero-embedding PCRs.  On a paired orbit $\{C,\RC(C)\}$, choose $w\in C$ and
+$\RC(w)$ in the mate.  On an RC-stable PCR, choose either of its two
+RC-fixed rotations; Appendix~\ref{app:technical} proves that exactly two
+exist.  These choices make the zero-sector part of $M$ invariant without
+altering the MDS property from Theorem~\ref{thm:arbitrary-zero}.

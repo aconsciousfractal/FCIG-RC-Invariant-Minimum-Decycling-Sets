@@ -1,0 +1,24 @@
+\section{Convention dictionary}
+\label{app:conventions}
+
+\begin{center}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.28\textwidth}p{0.62\textwidth}}
+\toprule
+Object & Frozen convention\\
+\midrule
+de Bruijn orientation & $u\to v$ when the suffix of $u$ equals the prefix of $v$\\
+rotation & $R(w_0\cdots w_{k-1})=w_1\cdots w_{k-1}w_0$\\
+reverse complement & reverse order, then complement; a directed anti-automorphism\\
+PCR & set of distinct rotations; never an unfolded length-$k$ list\\
+lower-state arc & $w:t(w)=w_0\cdots w_{k-2}\to h(w)=w_1\cdots w_{k-1}$\\
+gradient & $(\nabla q)(w)=q(t(w))-q(h(w))$\\
+half-plane & open upper half-plane; negative-real-axis selector\\
+set equality & literal labelled-word equality unless stated otherwise\\
+MDS & ordinary cardinality minimum plus a literal residual DAG\\
+finite evidence & exact at its frozen orders; never an all-order premise\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The paper excludes $k=1$.  At that order the lower-state edge presentation
+degenerates and is not part of the frozen normalization.

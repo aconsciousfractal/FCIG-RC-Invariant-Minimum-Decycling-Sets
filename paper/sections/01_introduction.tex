@@ -1,0 +1,65 @@
+\section{Introduction}
+\label{sec:introduction}
+
+Minimum decycling sets in directed de Bruijn graphs are both classical
+combinatorial objects and a source of finite-window sampling constructions.
+The ordinary minimum is governed by rotation cycles and was established by
+Mykkeltveit's construction and later unavoidable-set formulations
+\cite{Mykkeltveit1972,ChamparnaudHanselPerrin2004}.  Modern work has made the
+move structure of minimum decycling sets explicit
+\cite{MarcaisDeBlasioKingsford2024}.  Reverse-complement symmetry introduces
+a different constraint: a chosen word must be accompanied by the reverse
+complement of that word.  This constraint is natural in canonicalized
+sequence processing and was stated directly in the k-nonical setting
+\cite{MarcaisElderKingsford2024}.
+
+This paper settles the binary existence question.
+
+\begin{theorem}[Binary parity theorem]
+\label{thm:parity}
+For every binary word length $k\geq2$, the directed de Bruijn graph
+$B(2,k)$ has a reverse-complement-invariant ordinary minimum decycling set
+if and only if $k$ is even.
+\end{theorem}
+
+The two directions have different mechanisms.  At odd order, a primitive
+pure-rotation cycle has two reverse-complement-fixed lower endpoints.  One
+deletion from that cycle cannot destroy both endpoint-to-endpoint directions,
+and reverse complement supplies the opposing residual path.  At even order,
+we exploit a feature of the classical cyclotomic construction which is not
+visible from a generic symmetry average.  After resolving the zero-embedding
+ties equivariantly, the reverse-complement defect of the Mykkeltveit set is
+the exact gradient of an open-half-plane indicator.  Legal source firings
+then remove the defect monotonically.
+
+The proof is constructive in the following precise sense.  It gives an
+initial ordinary minimum set, an integral nonnegative defect potential, and
+a finite legal firing rule.  It does not claim a new complexity bound or an
+optimal firing length.
+
+\paragraph{Relation to prior terminology.}
+The phrase ``symmetric decycling set'' has also been used for the ordinary
+Mykkeltveit construction based on opposite geometric half-planes
+\cite{PellowEtAl2023}.  We therefore use the unambiguous phrase
+\emph{reverse-complement-invariant} throughout.
+
+\paragraph{Evidence discipline.}
+The all-order proof occupies Sections~\ref{sec:odd}--\ref{sec:parity-proof}.
+Section~\ref{sec:validation} records an independent exact finite
+implementation only as a sign, convention, and mutation check.  No finite
+census is a premise of Theorem~\ref{thm:parity}.
+
+\paragraph{Organization.}
+Section~\ref{sec:normalization} freezes the graph, rotation, and gradient
+conventions.  Section~\ref{sec:odd} proves the odd obstruction.  Sections
+\ref{sec:seed}--\ref{sec:even} give the even construction.  Section
+\ref{sec:parity-proof} composes the two halves and records exact scope.
+The appendices collect convention maps, technical details, and the finite
+assurance table.
+
+\begin{boundary}
+The theorem is binary on the even side.  The odd obstruction holds for every
+finite alphabet with a fixed-point-free complement, but no alphabet-general
+even theorem, exact odd excess, biological performance statement, or
+priority claim is made here.
+\end{boundary}

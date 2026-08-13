@@ -1,0 +1,26 @@
+{
+  "schema": "FCIG_RC_MDS_FINITE_ASSURANCE_SUMMARY_V1",
+  "claim_boundary": "FINITE_CONVENTION_ASSURANCE_ONLY_NOT_AN_ALL_ORDER_PREMISE",
+  "orders": [2, 4, 6, 8, 10, 12],
+  "order_rows": [
+    [2, 3, 0, 0, 0, 0, 0],
+    [4, 6, 3, 1, 1, 2, 1],
+    [6, 14, 5, 1, 2, 10, 5],
+    [8, 36, 6, 2, 2, 52, 26],
+    [10, 108, 9, 1, 4, 220, 110],
+    [12, 352, 19, 5, 7, 940, 470]
+  ],
+  "row_columns": [
+    "k",
+    "pcr_count",
+    "zero_pcr_count",
+    "stable_zero_count",
+    "paired_zero_pair_count",
+    "chi_support_count",
+    "move_count"
+  ],
+  "total_legal_f_moves": 612,
+  "scientific_mutations_rejected": 7,
+  "envelope_mutations_rejected": 7,
+  "stable_scientific_payload_sha256": "3bbec32e9d37706e98db9bb61192d12653a6adb8f419a2f1e816b31cd664d9b5"
+}

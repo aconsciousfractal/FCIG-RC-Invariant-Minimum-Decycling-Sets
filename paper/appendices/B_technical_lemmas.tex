@@ -1,0 +1,43 @@
+\section{Technical lemmas on stable PCRs}
+\label{app:technical}
+
+\begin{lemma}
+Let $C$ be an RC-stable binary PCR at even length $k$, and let $d$ be its
+minimal period.  Then $d$ is even and $C$ contains exactly two RC-fixed
+words.
+\end{lemma}
+
+\begin{proof}
+Choose $w\in C$ and $s\pmod d$ with $\RC(w)=R^sw$.  Stability pairs zeros
+and ones in the period, so $d$ is even.  In cyclic position notation the
+identity reads
+\[
+  w_r=\overline{w_{s-1-r}}.
+\]
+The positional involution $r\mapsto s-1-r$ cannot have a fixed point,
+because that would force a bit to equal its complement.  Since $d$ is even,
+the congruence $2r\equiv s-1\pmod d$ has a solution exactly when $s$ is odd;
+hence $s$ is even.
+
+A rotation $R^iw$ is RC fixed precisely when
+\[
+  \RC(R^iw)=R^{-i}\RC(w)=R^{s-i}w=R^iw,
+\]
+or $2i\equiv s\pmod d$.  With $d$ and $s$ even, this congruence has exactly
+$\gcd(2,d)=2$ solutions modulo $d$.
+\end{proof}
+
+\begin{lemma}
+On lower binary words of odd length, reverse complement has no fixed point.
+\end{lemma}
+
+\begin{proof}
+The central bit of a fixed odd-length word would have to equal its own
+complement.
+\end{proof}
+
+\begin{remark}
+These local facts guarantee equivariant choices on stable zero PCRs.  They do
+not by themselves imply that an arbitrary RC-compatible one-per-PCR
+transversal is decycling; the global DAG argument remains essential.
+\end{remark}

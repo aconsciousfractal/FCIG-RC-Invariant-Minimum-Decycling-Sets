@@ -1,0 +1,100 @@
+\section{Normalization and prior work}
+\label{sec:normalization}
+
+\subsection{Words, graphs, and reverse complement}
+
+Let $\A$ be a finite alphabet of even cardinality $q$, equipped with a
+fixed-point-free involution $a\mapsto\bar a$.  The binary specialization is
+$\A=\{0,1\}$ with $\bar0=1$ and $\bar1=0$.  For a word
+$w=w_0\cdots w_{k-1}$, define
+\[
+  \RC(w)_i=\overline{w_{k-1-i}}.
+\]
+The directed vertex de Bruijn graph $B(q,k)$ has vertex set $\A^k$ and
+an arc $u\to v$ exactly when $u_1\cdots u_{k-1}=v_0\cdots v_{k-2}$.
+Loops are retained.  Reverse complement is a directed anti-automorphism:
+\[
+  u\to v \quad\Longrightarrow\quad \RC(v)\to\RC(u).
+\]
+
+A set $M\subseteq\A^k$ is a \emph{decycling set} when $B(q,k)\setminus M$
+is a directed acyclic graph (DAG), and is an \emph{ordinary minimum
+decycling set} when its cardinality is minimum among all decycling sets.
+We abbreviate the latter to MDS.  Reverse-complement invariance means
+$\RC(M)=M$ as a literal set of labelled words.
+
+The line-graph identity $B(q,k)=L(B(q,k-1))$ lets us regard each
+$w=w_0\cdots w_{k-1}$ as the labelled lower-state arc
+\[
+  t(w)=w_0\cdots w_{k-2}\longrightarrow
+  h(w)=w_1\cdots w_{k-1}.
+\]
+Deleting $M$ as vertices of $B(q,k)$ is equivalent to deleting those
+labelled arcs from $B(q,k-1)$; acyclicity is equivalent in the two
+representations.
+
+\subsection{Pure cycling registers and the ordinary minimum}
+
+Let $R(w_0\cdots w_{k-1})=w_1\cdots w_{k-1}w_0$.  A pure cycling register
+(PCR) is an orbit under $R$, using distinct rotations only.  Its cardinality
+is the minimal period of its words.  PCRs partition $\A^k$, and each is a
+directed cycle.  Their number is the necklace count
+\begin{equation}
+  N_q(k)=\frac1k\sum_{d\mid k}\varphi(d)q^{k/d}.
+  \label{eq:necklace}
+\end{equation}
+Every decycling set meets every PCR.  The classical construction meets this
+lower bound, so the ordinary minimum cardinality is $N_q(k)$
+\cite{Mykkeltveit1972,ChamparnaudHanselPerrin2004}.  Consequently an MDS
+selects exactly one distinct word from each PCR.  The converse is false:
+one-per-PCR is a local cardinality condition and can leave cycles composed
+of arcs from several PCRs.  The binary homopolymers $0^k$ and $1^k$ are
+singleton PCR loops and are mandatory selections.
+
+\subsection{Firing convention}
+
+For a lower word $u\in\A^{k-1}$, write
+\[
+  \operatorname{lc}(u)=\{au:a\in\A\},
+  \qquad
+  \operatorname{rc}(u)=\{ua:a\in\A\}.
+\]
+Here ``lc'' and ``rc'' mean left and right companion sets; the latter is not
+the reverse-complement operator $\RC$.  A forward firing, or $F$-move, is
+valid at $u$ for a selected set $M$ precisely when
+\[
+  \operatorname{lc}(u)\subseteq M,
+  \qquad
+  F_u(M)=\bigl(M\setminus\operatorname{lc}(u)\bigr)
+           \cup\operatorname{rc}(u).
+\]
+These are literal sets: any overlap between the companion sets, including
+the homopolymer-loop case, is retained rather than counted twice.  The fact
+that a valid $F$-move preserves ordinary-MDS status is the source-move result
+of Mar\c{c}ais--DeBlasio--Kingsford
+\cite[Section~4.1, Proposition~2]{MarcaisDeBlasioKingsford2024}.  We import
+only this preservation fact, not any conjectural connectivity statement.
+
+For an integer function $q$ on lower states, our gradient sign is
+\begin{equation}
+  (\nabla q)(w)=q(t(w))-q(h(w)).
+  \label{eq:gradient}
+\end{equation}
+With this convention, a valid firing at $u$ changes the selected-edge
+indicator by $\nabla\ind_u$; the set-overlap convention makes this equality
+valid also at all homopolymer loops (the two loops in the binary
+specialization).
+
+\subsection{What is imported and what is proved here}
+
+We import the ordinary cardinality theorem and valid-$F$-move preservation.
+We prove the odd obstruction, arbitrary-zero-tie acyclicity of the chosen
+cyclotomic seed, equivariant tie selection, the exact coboundary identity,
+and the terminating defect descent.  The 2024 k-nonical paper supplies a
+direct dated formulation of the symmetry-constrained problem
+\cite{MarcaisElderKingsford2024}; it states that the minimum cardinality under
+the symmetry constraint was not known and uses integer linear programming for
+bounded orders.  Our result settles the binary ordinary-necklace-bound
+existence question at every order.  It does not replace that paper's
+optimization, implementation, or window-guarantee analysis, and its bounded
+computations are not used as a theorem in our proof.
