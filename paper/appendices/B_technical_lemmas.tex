@@ -1,0 +1,115 @@
+\section{Stable PCRs and exact algebraic signs}
+\label{app:technical}
+
+\subsection{Stable rotation cycles}
+
+\begin{lemma}[Fixed rotations in a stable PCR]
+\label{lem:stable-pcr}
+Let $C$ be an RC-stable PCR at even length $k$, over any fixed-point-free
+complemented alphabet, and let $d$ be its minimal period.  Then $d$ is even
+and $C$ contains exactly two reverse-complement-fixed words.
+\end{lemma}
+
+\begin{proof}
+Choose $w\in C$ and $s\pmod d$ with $\RC(w)=R^sw$.  In cyclic position
+notation,
+\[
+  w_r=\overline{w_{s-1-r}}.
+\]
+The positional involution $r\mapsto s-1-r$ cannot have a fixed point.  If
+$d$ were odd, $2$ would be invertible modulo $d$ and
+$2r\equiv s-1\pmod d$ would have a solution, a contradiction.  Thus $d$ is
+even.  For even $d$, that congruence is solvable exactly when $s$ is odd, so
+$s$ is even.
+
+A rotation $R^iw$ is reverse-complement fixed precisely when
+\[
+  \RC(R^iw)=R^{-i}\RC(w)=R^{s-i}w=R^iw,
+\]
+or $2i\equiv s\pmod d$.  Since $d$ and $s$ are even, this congruence has
+exactly $\gcd(2,d)=2$ solutions modulo $d$.
+\end{proof}
+
+\begin{lemma}
+On words of odd length, reverse complement has no fixed point.
+\end{lemma}
+
+\begin{proof}
+The central letter of a fixed odd-length word would equal its complement.
+\end{proof}
+
+These facts permit equivariant representatives on stable zero PCRs, but do
+not by themselves imply global acyclicity; Theorem~\ref{thm:arbitrary-zero}
+is still essential.
+
+\subsection{Polynomial-bit exact sign determination}
+
+We justify Corollary~\ref{cor:complexity}.  In this subsection only,
+specialize the real weight map used by the existence proof to an
+integer-valued map.  Put
+\[
+  c=2\cos(2\pi/k),\qquad d=\varphi(k)/2,
+  \qquad B=\max_{a\in\A}|s(a)|.
+\]
+For $k\geq4$, $c$ is an algebraic integer of degree $d$.  If $\Psi_k$ is its
+monic minimal polynomial, it is recovered from the reciprocal cyclotomic
+identity
+\begin{equation}
+  \Phi_k(z)=z^d\Psi_k(z+z^{-1}).
+  \label{eq:reciprocal-cyclotomic}
+\end{equation}
+Classical minimal-polynomial formulas provide the same representation
+\cite{WatkinsZeitlin1993}.
+Among the real conjugates of $c$, the chosen value is the largest one; this
+property gives a canonical exact isolating interval for the root of
+$\Psi_k$ at which all subsequent signs are evaluated.
+
+Define integer polynomials
+\[
+  C_0=2,\ C_1=x,\ C_{j+1}=xC_j-C_{j-1},
+  \qquad
+  S_0=0,\ S_1=1,\ S_{j+1}=xS_j-S_{j-1}.
+\]
+At $x=c$,
+\[
+  C_j(c)=2\cos(2\pi j/k),
+  \qquad
+  S_j(c)=\frac{\sin(2\pi j/k)}{\sin(2\pi/k)}.
+\]
+Since $\sin(2\pi/k)>0$, every sign or zero used in the seed and midpoint
+rules reduces to an integer polynomial at $c$:
+\begin{align*}
+  2\operatorname{Re}P_s(w)
+    &=\sum_j s(w_j)C_{j+1}(c),\\
+  \operatorname{sign}\operatorname{Im}P_s(w)
+    &=\operatorname{sign}\sum_j s(w_j)S_{j+1}(c),\\
+  \operatorname{sign}\lambda_s(u)
+    &=\operatorname{sign}\sum_j s(u_j)S_{j+1}(c),\\
+  2r_s(u)
+    &=\sum_j s(u_j)\bigl(C_{j+1}(c)-2\bigr).
+\end{align*}
+Reducing a polynomial modulo $\Psi_k$ decides exact zero: the value vanishes
+at $c$ precisely when the remainder is the zero polynomial.
+
+For a nonzero remainder $g$, each conjugate $c_i$ of $c$ lies in $[-2,2]$.
+The elementary bounds
+$|C_j(c_i)|\leq2$ and $|S_j(c_i)|\leq j$ imply the common safe estimate
+\[
+  |g(c_i)|\leq M:=2Bk(k+1).
+\]
+Because $g(c)$ is a nonzero algebraic integer, its field norm is a nonzero
+rational integer.  Therefore
+\begin{equation}
+  |g(c)|\geq M^{-(d-1)}.
+  \label{eq:norm-gap}
+\end{equation}
+Certified interval evaluation below half this gap determines the sign.
+
+The coefficients of $\Phi_k$, $\Psi_k$, the recurrences, and their remainders
+have bit length polynomial in $k$ and $\log(B+1)$.  Standard
+Sturm--Habicht real-root isolation and sign evaluation operate in polynomial
+bit complexity \cite{EmirisTsigaridas2006}.  Equation~\eqref{eq:norm-gap}
+requires only $O(k(\log B+\log k))$ refinement bits.  Scanning at most $k$
+rotations handles a deterministic zero-PCR tie.  This proves the claimed
+polynomial preprocessing, query, and workspace bounds without a real-RAM or
+floating-point assumption.

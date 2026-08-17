@@ -1,0 +1,96 @@
+\section{Normalization and prior work}
+\label{sec:normalization}
+
+\subsection{Words, graphs, and reverse complement}
+
+Let $\A$ be a finite nonempty alphabet of cardinality $q$, equipped with a
+fixed-point-free involution $a\mapsto\bar a$.  Thus $q$ is even.  The binary
+specialization has $\bar0=1$, and the DNA specialization has
+$\bar A=T$, $\bar C=G$.  For $w=w_0\cdots w_{k-1}$ define
+\[
+  \RC(w)_i=\overline{w_{k-1-i}}.
+\]
+The directed vertex de Bruijn graph $B(q,k)$ has vertex set $\A^k$ and an
+arc $u\to v$ exactly when
+$u_1\cdots u_{k-1}=v_0\cdots v_{k-2}$.  Loops are retained.  Reverse
+complement is a directed anti-automorphism:
+\[
+  u\to v \quad\Longrightarrow\quad \RC(v)\to\RC(u).
+\]
+
+A set $M\subseteq\A^k$ is a \emph{decycling set} when
+$B(q,k)\setminus M$ is a directed acyclic graph (DAG), and is an
+\emph{ordinary minimum decycling set} when its cardinality is minimum among
+all decycling sets.  We abbreviate the latter to MDS.  Reverse-complement
+invariance means $\RC(M)=M$ as a literal set of labelled words.
+
+The line-graph identity $B(q,k)=L(B(q,k-1))$ lets us regard each length-$k$
+word as the labelled lower-state arc
+\[
+  \tail(w)=w_0\cdots w_{k-2}\longrightarrow
+  \head(w)=w_1\cdots w_{k-1}.
+\]
+Deleting $M$ as vertices of $B(q,k)$ is equivalent to deleting those labelled
+arcs from $B(q,k-1)$; acyclicity is equivalent in the two representations.
+
+\subsection{Pure cycling registers and the ordinary minimum}
+
+Let $R(w_0\cdots w_{k-1})=w_1\cdots w_{k-1}w_0$.  A pure cycling register
+(PCR) is an orbit under $R$, using distinct rotations only.  Its cardinality
+is the minimal period of its words.  PCRs partition $\A^k$, and each is a
+directed cycle.  Their number is
+\begin{equation}
+  N_q(k)=\frac1k\sum_{d\mid k}\varphi(d)q^{k/d}.
+  \label{eq:necklace}
+\end{equation}
+Every decycling set meets every PCR.  The matching construction for arbitrary
+finite alphabets is the unavoidable-set theorem of
+Champarnaud--Hansel--Perrin \cite{ChamparnaudHanselPerrin2004}; the original
+binary construction is due to Mykkeltveit \cite{Mykkeltveit1972}.  Hence the
+ordinary minimum cardinality is $N_q(k)$, and an MDS selects exactly one
+distinct word from each PCR.  The converse is false: one-per-PCR is only a
+local cardinality condition and can leave cycles using several PCRs.  Every
+homopolymer $a^k$ is a singleton PCR loop and is a mandatory selection.
+
+\subsection{Full-alphabet source firings}
+
+For $u\in\A^{k-1}$ write
+\[
+  L(u)=\{au:a\in\A\},\qquad R(u)=\{ua:a\in\A\}.
+\]
+A forward firing, or full-alphabet $F$-move, is valid at $u$ for a selected
+set $M$ when $L(u)\subseteq M$, and then
+\[
+  F_u(M)=\bigl(M\setminus L(u)\bigr)\cup R(u).
+\]
+These are literal sets.  The two companion sets overlap only at a
+homopolymer loop, which is removed and reinserted.  A valid $F$-move
+preserves ordinary-MDS status; this is the standard move of
+\cite[Section~4.1]{MarcaisDeBlasioKingsford2024}.  Indeed, before the move
+the residual lower graph has no arc entering $u$, whereas afterward it has
+no arc leaving $u$.  Any newly created directed cycle would have to enter
+$u$ along a restored arc and then leave through a deleted one, which is
+impossible.  The result is therefore decycling.  If a newly inserted
+outgoing companion other than the common loop had already belonged to
+$M$, the result would be a smaller decycling set, contradicting ordinary
+minimality; hence cardinality is preserved.
+
+For an integer function $f$ on lower states, fix the gradient convention
+\begin{equation}
+  (\nabla f)(w)=f(\tail(w))-f(\head(w)).
+  \label{eq:gradient}
+\end{equation}
+The indicator update of a valid firing is $\nabla\ind_u$, including at a
+homopolymer loop where both sides vanish.
+
+\subsection{Scope of the imported results}
+
+We import the ordinary cardinality theorem and the standard $F$-move
+terminology.  We prove move preservation above, as well as the odd
+obstruction, the weighted arbitrary-zero-tie acyclicity
+theorem, equivariant zero ties, the exact coboundary, the terminating descent,
+and the direct midpoint selector.  The k-nonical paper supplies a dated
+formulation of the reverse-complement-constrained problem
+\cite{MarcaisElderKingsford2024}; it does not supply the parity theorem or
+the construction below.  Our graph-theoretic result does not replace that
+paper's optimization, implementation, or window-guarantee analysis.

@@ -1,0 +1,32 @@
+\section{Finite validation boundaries}
+\label{app:finite}
+
+The executable binary panel has four epistemic roles: it verifies the
+left-rotation and gradient conventions; exercises negative-ray,
+strict-crossing, and zero-sector cases; replays every legal firing and
+terminal invariant; and rejects convention mutations.  It neither
+interpolates in $k$ nor tests the alphabet-general theorem.
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{rrrrrrr}
+\toprule
+$k$ & PCRs & zero PCRs & stable zero & paired zero & $|\supp\chi|$ & firings\\
+\midrule
+2  & 3   & 0  & 0 & 0 & 0   & 0\\
+4  & 6   & 3  & 1 & 1 & 2   & 1\\
+6  & 14  & 5  & 1 & 2 & 10  & 5\\
+8  & 36  & 6  & 2 & 2 & 52  & 26\\
+10 & 108 & 9  & 1 & 4 & 220 & 110\\
+12 & 352 & 19 & 5 & 7 & 940 & 470\\
+\bottomrule
+\end{tabular}
+\caption{Exact binary convention-assurance panel.  PCRs use distinct
+rotations, and ``paired zero'' counts PCR pairs.}
+\label{tab:validation}
+\end{table}
+
+The total is 612 legal firings.  Runtime and envelope metadata are excluded
+from the stable scientific payload.  The paper proof, not this table or its
+hash, is authority for every all-order statement.

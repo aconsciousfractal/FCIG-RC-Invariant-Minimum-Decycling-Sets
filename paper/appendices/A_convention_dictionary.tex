@@ -1,0 +1,28 @@
+\section{Convention dictionary}
+\label{app:conventions}
+
+\begin{center}
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.28\textwidth}p{0.62\textwidth}}
+\toprule
+Object & Frozen convention\\
+\midrule
+alphabet & finite, nonempty, fixed-point-free involutive complement\\
+de Bruijn orientation & $u\to v$ when the suffix of $u$ equals the prefix of $v$\\
+rotation & $R(w_0\cdots w_{k-1})=w_1\cdots w_{k-1}w_0$\\
+reverse complement & reverse, complement; directed anti-automorphism\\
+PCR & set of distinct rotations; never an unfolded length-$k$ list\\
+lower-state arc & $w:\tail(w)=w_0\cdots w_{k-2}\to\head(w)=w_1\cdots w_{k-1}$\\
+weights & existence: injective nonzero reals with $s(\bar a)=-s(a)$;
+exact bit complexity: integers\\
+gradient & $(\nabla f)(w)=f(\tail(w))-f(\head(w))$\\
+half-plane & open upper half-plane; negative-real-axis selector\\
+$F$-move & all $q$ incoming companions replaced by all $q$ outgoing companions\\
+set equality & literal labelled-word equality unless stated otherwise\\
+MDS & ordinary cardinality minimum plus a literal residual DAG\\
+finite evidence & binary exact panel; never an all-order or $q$-ary premise\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The theorem starts at $k=2$.  At $k=1$ every vertex is a loop, the unique
+ordinary minimum is $\A$, and the parity conclusion would be false.

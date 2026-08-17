@@ -1,0 +1,131 @@
+\section{The weighted cyclotomic seed and zero-sector ties}
+\label{sec:seed}
+
+Assume for this section that $k\geq4$ is even.  Choose an injective map
+\[
+  s:\A\longrightarrow\mathbb R\setminus\{0\},
+  \qquad s(\bar a)=-s(a).
+\]
+Such a map exists by assigning distinct positive magnitudes to the
+complement pairs.  For DNA one may use
+$s(A)=-2,s(C)=-1,s(G)=1,s(T)=2$.
+The existence, descent, and direct-selector arguments use only real
+arithmetic, signs, and injectivity.  Integrality will be imposed separately
+in Corollary~\ref{cor:complexity}, where a finite exact encoding and a bit
+complexity bound are required.
+Put $\zeta=e^{2\pi i/k}$ and, for $w=w_0\cdots w_{k-1}$, define
+\[
+  P_s(w)=\sum_{j=0}^{k-1}s(w_j)\zeta^{j+1},
+  \qquad W_s(w)=\sum_{j=0}^{k-1}s(w_j).
+\]
+For $u=u_0\cdots u_{k-2}$ define
+\[
+  \lambda_s(u)=\sum_{j=0}^{k-2}s(u_j)
+    \sin\!\left(\frac{2\pi(j+1)}k\right),
+  \qquad \chi(u)=\ind[\lambda_s(u)>0].
+\]
+
+\begin{lemma}[Weighted covariance]
+\label{lem:covariance}
+For every length-$k$ word $w$,
+\[
+  P_s(Rw)=\zeta^{-1}P_s(w),\quad
+  P_s(\RC w)=-\overline{P_s(Rw)},\quad
+  P_s(R\RC w)=-\overline{P_s(w)}.
+\]
+Moreover
+\[
+  \operatorname{Im}P_s(w)=\lambda_s(\tail(w)),\qquad
+  \operatorname{Im}P_s(Rw)=\lambda_s(\head(w)),
+\]
+and $\lambda_s(\RC u)=\lambda_s(u)$ on lower words.
+\end{lemma}
+
+\begin{proof}
+The rotation identity follows by reindexing and $\zeta^k=1$.  Antisymmetry
+of $s$ gives
+\[
+  P_s(\RC w)
+  =-\sum_j s(w_j)\zeta^{-j}
+  =-\overline{P_s(Rw)}.
+\]
+Rotating gives the third identity.  The omitted final letter of
+$\tail(w)$ multiplies $\zeta^k=1$ and contributes no imaginary part; apply
+the same observation to $Rw$ for the head.  Finally, reindexing the lower
+sum, using antisymmetry and
+$\sin(2\pi(k-r)/k)=-\sin(2\pi r/k)$, proves lower-word invariance.
+\end{proof}
+
+\subsection{The selector}
+
+On each PCR with nonzero embedding select one word by the rule
+\begin{enumerate}
+  \item select the point on the negative real axis, if it occurs;
+  \item otherwise select the unique $w$ satisfying
+  $\operatorname{Im}P_s(w)<0<\operatorname{Im}P_s(Rw)$.
+\end{enumerate}
+On a PCR where $P_s$ vanishes identically, select an arbitrary representative
+for now.  Call the resulting set $M_0$ and write $m_0=\ind_{M_0}$.
+
+\begin{lemma}[Full period and uniqueness]
+\label{lem:selector-unique}
+Every nonzero embedded PCR has full period $k$, and the selector above is
+unique.
+\end{lemma}
+
+\begin{proof}
+If a word in a nonzero PCR had period $d<k$, then
+$P_s(R^dw)=\zeta^{-d}P_s(w)=P_s(w)$ would force $P_s(w)=0$.  The nonzero
+rotations therefore form a nondegenerate regular $k$-gon.  Since $k$ is
+even, a negative-real vertex is unique when present; if no real vertex is
+present, clockwise rotation gives exactly one strict lower-to-upper crossing.
+\end{proof}
+
+\begin{theorem}[Arbitrary-zero-tie acyclicity]
+\label{thm:arbitrary-zero}
+Every choice of one representative on each zero-embedding PCR produces an
+ordinary MDS $M_0$.
+\end{theorem}
+
+\begin{proof}
+Set $Q_s=P_s-W_s$.  If
+$y=w_1\cdots w_{k-1}a$ follows $w=w_0\cdots w_{k-1}$ and
+$\delta=s(a)-s(w_0)$, then
+\[
+  P_s(y)=\zeta^{-1}P_s(w)+\delta,\qquad
+  W_s(y)=W_s(w)+\delta,\qquad
+  Q_s(y)=-W_s(w)+\zeta^{-1}P_s(w).
+\]
+A residual path cannot pass from $\operatorname{Im}P_s\leq0$ to
+$\operatorname{Im}P_s>0$: the strict crossing and departure from the
+negative ray are selected.  Hence a residual cycle lies wholly in the open
+upper or closed lower half-plane.
+
+Write $\theta=2\pi/k$ and $P_s(w)=\rho e^{i\phi}\neq0$.  Along an edge whose
+endpoints remain in the open upper region,
+\begin{equation}
+  \operatorname{Re}Q_s(y)-\operatorname{Re}Q_s(w)
+  =2\rho\sin(\theta/2)\sin(\phi-\theta/2)>0.
+  \label{eq:q-monotone}
+\end{equation}
+Along a residual edge in the closed lower region the same expression is
+strictly negative: the negative-ray starting point was selected and the
+remaining angular interval is $\pi+\theta\leq\phi\leq2\pi$.  Thus a
+residual cycle could only consist of edges beginning at $P_s=0$.
+
+If consecutive labels $w$ and $y$ both have zero embedding, then
+$P_s(y)=s(a)-s(w_0)=0$.  Injectivity of $s$ gives $a=w_0$, so the edge is a
+pure rotation.  Such a cycle is exactly a zero-embedding PCR, from which one
+word was selected.  This final contradiction proves acyclicity.  Since
+$M_0$ meets every PCR exactly once, it has cardinality $N_q(k)$.
+\end{proof}
+
+\subsection{Equivariant zero ties}
+
+Reverse complement permutes the zero PCRs.  On a paired orbit
+$\{C,\RC(C)\}$, choose $w\in C$ and $\RC(w)$ in its mate.  On a stable PCR,
+choose one of its two reverse-complement-fixed rotations; the
+alphabet-general fixed-rotation lemma is proved in
+Appendix~\ref{app:technical}.  From now on $M_0$ denotes a seed with these
+equivariant zero ties.  The zero-sector part of $m_0$ is then literally
+reverse-complement invariant.

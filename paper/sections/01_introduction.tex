@@ -1,0 +1,76 @@
+\section{Introduction}
+\label{sec:introduction}
+
+Minimum decycling sets in directed de Bruijn graphs are classical
+combinatorial objects and underlie several finite-window sequence-sampling
+constructions.  Their ordinary minimum is governed by rotation cycles and
+unavoidable sets \cite{Mykkeltveit1972,ChamparnaudHanselPerrin2004}.  More
+recent work made the move structure of minimum decycling sets explicit
+\cite{MarcaisDeBlasioKingsford2024}.  Reverse-complement symmetry imposes a
+different constraint: whenever a word is chosen, its reverse complement must
+also be chosen.  This is the natural strand symmetry for DNA and was posed
+directly in the k-nonical setting \cite{MarcaisElderKingsford2024}.
+
+We settle the ordinary-minimum existence question over every complemented
+alphabet.
+
+\begin{theorem}[Parity theorem]
+\label{thm:parity}
+Let $\A$ be a finite nonempty alphabet with a fixed-point-free involutive
+complement, and put $q=|\A|$.  For every integer $k\geq2$, the directed de
+Bruijn graph $B(q,k)$ has a reverse-complement-invariant ordinary minimum
+decycling set if and only if $k$ is even.
+\end{theorem}
+
+In particular, Theorem~\ref{thm:parity} applies to binary words and to DNA
+words under $A\leftrightarrow T$ and $C\leftrightarrow G$.  The case $k=1$
+is deliberately outside the theorem: every loop must be deleted, so the
+unique ordinary minimum is the whole alphabet and is invariant even though
+$k$ is odd.
+
+The two directions use different mechanisms.  At odd order, a primitive
+pure-rotation cycle has two reverse-complement-fixed lower endpoints.  One
+deletion from that cycle cannot destroy both endpoint-to-endpoint directions,
+and reverse complement supplies the opposing residual path.  At even order,
+we assign distinct nonzero real weights $s(a)$ satisfying
+$s(\bar a)=-s(a)$.  A weighted cyclotomic version of the classical selector
+then has an exact reverse-complement defect equal to the gradient of an open
+half-plane indicator.  Legal full-alphabet source firings remove that defect
+monotonically.
+
+The proof yields two complementary constructions.  The first is a finite
+descent and exposes the move-theoretic mechanism; every allowed monotone
+scheduler uses an explicitly determined number of firings.  The second cuts
+the same self-dual residual poset at a spectral midpoint and gives a direct
+word-membership rule.  When the weight table is integer-valued, exact
+real-algebraic sign determination makes the latter a polynomial-bit
+algorithm.  Neither statement supplies a bound on
+the longest residual path or a biological performance guarantee.
+
+\paragraph{Relation to prior terminology.}
+The phrase ``symmetric decycling set'' has also been used for the ordinary
+Mykkeltveit construction based on opposite geometric half-planes
+\cite{PellowEtAl2023}.  We use the unambiguous phrase
+\emph{reverse-complement-invariant} throughout.
+
+\paragraph{Evidence discipline.}
+The all-order proof occupies Sections~\ref{sec:odd}--\ref{sec:parity-proof}.
+Section~\ref{sec:validation} records an independent exact implementation of
+the binary specialization only as a sign, convention, and mutation check.
+No finite census is a premise of Theorem~\ref{thm:parity}.
+
+\paragraph{Organization.}
+Section~\ref{sec:normalization} fixes the graph, rotation, and gradient
+conventions.  Section~\ref{sec:odd} proves the odd obstruction.  Sections
+\ref{sec:seed}--\ref{sec:even} construct and symmetrize the weighted seed.
+Section~\ref{sec:direct} gives the direct spectral selector, and
+Section~\ref{sec:parity-proof} assembles the parity theorem and its DNA
+corollary.  The appendices collect convention maps, technical details, and
+the finite binary assurance table.
+
+\begin{boundary}
+The mathematical theorem is alphabet-general under a fixed-point-free
+complement.  We do not claim an exact odd-order symmetry premium, an optimal
+firing path, a quantitative window guarantee, biological performance, or
+blanket novelty or priority over unexamined sources.
+\end{boundary}

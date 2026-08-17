@@ -1,0 +1,42 @@
+\section{The half-plane coboundary}
+\label{sec:coboundary}
+
+\begin{theorem}[Exact reverse-complement defect]
+\label{thm:coboundary}
+For every length-$k$ word $w$,
+\begin{equation}
+  m_0(\RC w)-m_0(w)
+  =\chi(\tail(w))-\chi(\head(w))
+  =(\nabla\chi)(w).
+  \label{eq:coboundary}
+\end{equation}
+Equivalently, $\ind_{\RC(M_0)}-\ind_{M_0}=\nabla\chi$.
+\end{theorem}
+
+\begin{proof}
+Put
+$A=\operatorname{Im}P_s(w)$ and
+$B=\operatorname{Im}P_s(Rw)$.  Lemma~\ref{lem:covariance} sends the ordered
+imaginary coordinates of $\RC(w)$ to $(B,A)$.  If $A$ and $B$ are nonzero,
+the selector rule gives
+\[
+  m_0(\RC w)-m_0(w)
+  =\ind[B<0<A]-\ind[A<0<B]
+  =\ind[A>0]-\ind[B>0].
+\]
+
+The ray cases fix the sign convention.  If $A=0$, write
+$P_s(w)=r\in\mathbb R$.  Then
+$B=-r\sin(2\pi/k)$: for $r<0$ both sides are $-1$, and for $r>0$ both are
+zero.  If $B=0$, write $P_s(Rw)=r\in\mathbb R$: for $r>0$ both sides are
+$+1$, and for $r<0$ both are zero.  When $k>2$, simultaneous vanishing of
+$A$ and $B$ with $P_s(w)\neq0$ is impossible.  In the zero sector, the
+chosen ties are equivariant, while both lower imaginary coordinates vanish.
+
+Finally, Lemma~\ref{lem:covariance} identifies the sign difference with
+$\chi(\tail(w))-\chi(\head(w))$ under convention~\eqref{eq:gradient}.
+\end{proof}
+
+The open upper half-plane and the negative-real-axis convention are
+load-bearing.  Equation~\eqref{eq:coboundary} is a literal edgewise identity,
+not an averaged symmetry statement.

@@ -1,0 +1,60 @@
+\section{The \texorpdfstring{$q$}{q}-ary parity theorem}
+\label{sec:parity-proof}
+
+The only even order not covered by the cyclotomic argument is $k=2$.
+
+\begin{lemma}[The base case]
+\label{lem:k2}
+For every fixed-point-free complemented alphabet, $B(q,2)$ has a literal
+reverse-complement-invariant ordinary MDS.
+\end{lemma}
+
+\begin{proof}
+Choose one representative $a_i$ from each complement pair and impose the
+complement-reversing order
+\[
+  a_1<\cdots<a_{q/2}<\bar a_{q/2}<\cdots<\bar a_1.
+\]
+Delete the word $xy$ exactly when $y\leq x$.  Every residual lower arc is
+strictly increasing, so the residual graph is acyclic.  The deletion rule is
+invariant because $y\leq x$ if and only if
+$\bar x\leq\bar y$.  It deletes all $q$ loops and one orientation of every
+unordered pair, hence
+\[
+  q+\frac{q(q-1)}2=\frac{q(q+1)}2=N_q(2).
+\]
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:parity}]
+For even $k\geq4$, choose any injective antisymmetric nonzero real weight map.
+Theorem~\ref{thm:even-descent} gives an invariant ordinary MDS, and
+Theorem~\ref{thm:direct} gives a deterministic direct choice of one.  The
+case $k=2$ is Lemma~\ref{lem:k2}.  Theorem~\ref{thm:odd} excludes ordinary
+minimum cardinality at every odd $k\geq3$.
+\end{proof}
+
+\begin{corollary}[DNA]
+\label{cor:dna}
+Let $\A=\{A,C,G,T\}$ with $A\leftrightarrow T$ and
+$C\leftrightarrow G$.  For every $k\geq2$, $B(4,k)$ has a
+reverse-complement-invariant ordinary minimum decycling set if and only if
+$k$ is even.  At even $k$ its cardinality is
+\[
+  N_4(k)=\frac1k\sum_{d\mid k}\varphi(d)4^{k/d}.
+\]
+One concrete direct construction uses weights $(-2,-1,1,2)$ in the order
+$(A,C,G,T)$.
+\end{corollary}
+
+For completeness, define the symmetry-constrained minimum
+\[
+  \tau_{\RC}(q,k)=
+  \min\{|M|:M\subseteq\A^k,\ \RC(M)=M,\ B(q,k)\setminus M\text{ is a DAG}\}
+\]
+and the premium $\Delta_q(k)=\tau_{\RC}(q,k)-N_q(k)$.  The theorem says
+\[
+  \Delta_q(k)=0\quad(k\text{ even}),
+  \qquad
+  \Delta_q(k)\geq2\quad(k\geq3\text{ odd}).
+\]
+No exact formula for the odd premium is asserted.

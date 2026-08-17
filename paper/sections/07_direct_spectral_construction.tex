@@ -1,0 +1,150 @@
+\section{A direct spectral construction}
+\label{sec:direct}
+
+The descent proves existence but need not be simulated.  This section
+selects a particular self-dual ideal of positive lower states and thereby
+gives a direct terminal formula.
+
+Fix any total order on $\A$ and use its lexicographic extension to lower
+words.  Write $\vartheta(u)=\RC(u)$ and define
+\[
+  \psi_s(u)=\sum_{j=0}^{k-2}s(u_j)(\zeta^{j+1}-1),\qquad
+  r_s(u)=\operatorname{Re}\psi_s(u),\qquad
+  U=\{u:\lambda_s(u)>0\}.
+\]
+The final coefficient of $P_s(ua)-W_s(ua)$ is
+$s(a)(\zeta^k-1)=0$, so
+\begin{equation}
+  \psi_s(u)=P_s(ua)-W_s(ua)
+  \label{eq:psi-suffix-independent}
+\end{equation}
+for every appended letter $a$.
+
+Define $a_\star:\A^{k-1}\to\{0,1\}$ by
+\begin{equation}
+  a_\star(u)=1
+  \quad\Longleftrightarrow\quad
+  u\in U\ \text{ and }\
+  \bigl(r_s(u)<0\ \text{ or }\
+  [r_s(u)=0\ \text{ and }u<\vartheta(u)]\bigr).
+  \label{eq:astar}
+\end{equation}
+
+\begin{lemma}[Self-dual spectral ideal]
+\label{lem:spectral-ideal}
+The set $A_\star=\{u:a_\star(u)=1\}$ is an order ideal in the residual seed
+graph induced by $U$, and
+\begin{equation}
+  a_\star(u)+a_\star(\vartheta u)=\chi(u)
+  \label{eq:self-dual-ideal}
+\end{equation}
+for every lower word $u$.
+\end{lemma}
+
+\begin{proof}
+Reindexing as in Lemma~\ref{lem:covariance} gives
+\[
+  \psi_s(\vartheta u)=-\overline{\psi_s(u)}.
+\]
+Thus $\lambda_s(\vartheta u)=\lambda_s(u)$ and
+$r_s(\vartheta u)=-r_s(u)$.  Since $k-1$ is odd and the complement has no
+fixed letter, $\vartheta$ has no fixed lower word.  Formula
+\eqref{eq:astar} therefore chooses exactly one member of every
+$\vartheta$-pair in $U$, proving~\eqref{eq:self-dual-ideal}.
+
+Now let $w:u\to v$ be an edge with $u,v\in U$.  Both consecutive imaginary
+coordinates are positive, so $w$ is not selected by the seed.  From
+\eqref{eq:psi-suffix-independent} and rotation covariance,
+\begin{equation}
+  \psi_s(v)-\psi_s(u)=(\zeta^{-1}-1)P_s(w).
+  \label{eq:r-increment}
+\end{equation}
+Writing $P_s(w)=\rho e^{i\phi}$ and $\alpha=2\pi/k$, the two positive
+imaginary coordinates imply $\alpha<\phi<\pi$.  Hence
+\[
+  r_s(v)-r_s(u)
+  =2\rho\sin(\alpha/2)\sin(\phi-\alpha/2)>0.
+\]
+If $v\in A_\star$, then $r_s(v)\leq0$, so every predecessor $u$ has
+$r_s(u)<0$ and lies in $A_\star$.  This is the ideal property.  Strictness
+also shows that no residual edge joins two zero-level states, so the
+lexicographic tie in~\eqref{eq:astar} cannot spoil ideality.
+\end{proof}
+
+\begin{theorem}[Direct spectral MDS]
+\label{thm:direct}
+For every even $k\geq4$, the function
+\begin{equation}
+  m_\star(w)=m_0(w)+a_\star(\tail(w))-a_\star(\head(w))
+  \label{eq:direct-selector}
+\end{equation}
+is the indicator of a literal reverse-complement-invariant ordinary MDS.
+\end{theorem}
+
+\begin{proof}
+Fire the states of $A_\star$ in any predecessor-first order.  Consider an
+incoming edge $x\to u$ when $u$ is to be fired.  If it was selected by
+$M_0$, nothing is required.  Otherwise it is an edge of the residual seed
+graph.  If $x\notin U$, the defect identity~\eqref{eq:coboundary} and
+Booleanity would force that edge to be selected by $M_0$, a contradiction.
+Thus $x\in U$; ideality puts $x$ in $A_\star$, and it was fired earlier,
+selecting its outgoing edge to $u$.  No state of $U$ is a
+homopolymer, since the complete sine sum is zero there.  Thus all incoming
+companions of $u$ are selected and the full-alphabet firing is legal.
+
+The cumulative indicator update is exactly~\eqref{eq:direct-selector}; in
+particular it is $0$--$1$ valued and remains an ordinary MDS.  For
+$w:u\to v$, equation~\eqref{eq:self-dual-ideal} gives
+\[
+  (\nabla a_\star)(\RC w)
+  =(\nabla a_\star)(w)-(\nabla\chi)(w).
+\]
+Combining this with~\eqref{eq:coboundary} yields
+$m_\star(\RC w)=m_\star(w)$.
+\end{proof}
+
+The construction is direct in a precise sense: membership of a queried word
+uses the seed rule and the two endpoint values in~\eqref{eq:astar}, not a
+materialized list of firings or of $q^{k-1}$ lower states.  For a deterministic
+seed, order PCRs by their lexicographically least word.  In each paired
+zero-PCR orbit, select the least word of the smaller PCR and its reverse
+complement in the mate; on a stable zero PCR select the least of the two
+fixed rotations.
+
+\begin{corollary}[Real-weight family]
+\label{cor:real-weights}
+For every injective map
+$s:\A\to\mathbb R\setminus\{0\}$ satisfying
+$s(\bar a)=-s(a)$, the seed construction produces an ordinary MDS, and both
+the legal defect descent and direct selector produce
+reverse-complement-invariant ordinary MDSs at every even $k\geq4$.  No
+integrality hypothesis on $s$ is needed for these existence statements.
+\end{corollary}
+
+\begin{proof}
+Weighted covariance uses only real linearity, antisymmetry, and complex
+conjugation.  The zero-sector argument additionally uses injectivity to
+deduce equality of letters from equality of weights.  The coboundary uses
+only signs, while its nonnegative integral potential is the indicator
+$\chi$, not the alphabet weight map.  Finally, the direct construction uses
+the real order of $\lambda_s$ and $r_s$.  Thus every preceding step remains
+valid for the stated real weights.
+\end{proof}
+
+\begin{corollary}[Exact membership complexity]
+\label{cor:complexity}
+Given the complement table, the integer weights, and an even length $k$, a
+queried word's membership in the MDS of Theorem~\ref{thm:direct} is decidable
+with preprocessing time, query time, and working memory polynomial in $k$,
+$q$, and the bit length of the weight table.  The algorithm uses exact
+arithmetic and stores no object of size $q^{k-1}$ or $q^k$.
+\end{corollary}
+
+\begin{proof}
+Appendix~\ref{app:technical} reduces every required real and imaginary sign
+to the sign of an integer polynomial at $2\cos(2\pi/k)$, supplies an explicit
+algebraic separation bound, and invokes standard polynomial-bit real
+algebraic arithmetic.  In the zero-PCR branch, at most $k$ distinct rotations
+and their reverse complements are inspected.  All remaining operations are
+linear scans or lexicographic comparisons of words of length at most $k$.
+\end{proof}

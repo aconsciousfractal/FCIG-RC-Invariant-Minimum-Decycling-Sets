@@ -1,0 +1,95 @@
+\section{Legal defect descent and even existence}
+\label{sec:even}
+
+Reverse complement carries an ordinary MDS to an ordinary MDS because it
+reverses directed cycles bijectively.
+
+\begin{lemma}[Positive-potential firing]
+\label{lem:positive-firing}
+Let $A$ and $N$ be ordinary MDSs and suppose
+\[
+  \ind_N-\ind_A=\nabla f
+\]
+for an integral potential $f\geq0$ with minimum zero.  If $A\neq N$, some
+lower state $u$ with $f(u)>0$ admits a valid full-alphabet $F$-move from $A$.
+\end{lemma}
+
+\begin{proof}
+Assume otherwise.  At every positive state $u$, failure of the source
+condition supplies an incoming residual arc $v\to u$.  It may be chosen
+nonloop: a residual loop would already contradict that $A$ is decycling.
+Since this arc is not in $A$,
+\[
+  \ind_N(v\to u)=f(v)-f(u)\in\{0,1\},
+\]
+so $f(v)\geq f(u)>0$.  Iterating the predecessor choice within the finite
+positive support eventually produces a directed residual cycle, a
+contradiction.
+\end{proof}
+
+\begin{lemma}[Defect-paired update]
+\label{lem:paired-update}
+Suppose an ordinary MDS $A$ satisfies
+\[
+  \ind_{\RC(A)}-\ind_A=\nabla f,\qquad
+  f\geq0,\qquad f\circ\RC=f,\qquad \min f=0.
+\]
+If $A$ is not invariant, fire an enabled positive state $u$ supplied by
+Lemma~\ref{lem:positive-firing}.  The new MDS $A'=F_u(A)$ satisfies the same
+conditions with
+\[
+  f'=f-\ind_u-\ind_{\RC(u)}.
+\]
+Moreover $u\neq\RC(u)$ and $\sum f'=\sum f-2$.
+\end{lemma}
+
+\begin{proof}
+The physical firing gives $\ind_{A'}-\ind_A=\nabla\ind_u$.  Reverse
+complement reverses lower arcs, hence sends this gradient to
+$-\nabla\ind_{\RC(u)}$.  Subtracting the update from its image gives
+\[
+  \ind_{\RC(A')}-\ind_{A'}
+  =\nabla\bigl(f-\ind_u-\ind_{\RC(u)}\bigr).
+\]
+The lower length $k-1$ is odd, so a reverse-complement-fixed lower word would
+have a central letter fixed by complement; therefore $u\neq\RC(u)$.  Symmetry
+of $f$ makes both decremented coordinates positive.  Nonnegativity,
+symmetry, and minimum zero are preserved, and the total decreases by two.
+\end{proof}
+
+\begin{theorem}[Even-order descent]
+\label{thm:even-descent}
+For every even $k\geq4$, the seed $M_0$ reaches a literal
+reverse-complement-invariant ordinary MDS by legal full-alphabet $F$-moves.
+Every scheduler that repeatedly uses Lemma~\ref{lem:positive-firing} executes
+exactly
+\begin{equation}
+  \frac12\bigl|\{u\in\A^{k-1}:\lambda_s(u)>0\}\bigr|
+  \label{eq:move-count}
+\end{equation}
+physical firings.
+\end{theorem}
+
+\begin{proof}
+Theorem~\ref{thm:coboundary} initializes the symmetric nonnegative potential
+$f=\chi$.  Its minimum is zero: every homopolymer lower word $a^{k-1}$ has
+\[
+  \lambda_s(a^{k-1})
+  =s(a)\sum_{j=1}^{k-1}\sin(2\pi j/k)=0.
+\]
+While the current MDS is not invariant, Lemmas
+\ref{lem:positive-firing}--\ref{lem:paired-update} supply another legal move
+and decrease $\sum f$ by two.  The process terminates.
+
+At an invariant terminal, $\nabla f=0$.  The lower de Bruijn graph is
+strongly connected---append the letters of any target word---so $f$ is
+constant.  Its preserved minimum is zero, hence $f=0$.  Conversely the
+potential cannot vanish before the indicator defect does.  Starting from the
+$0$--$1$ potential $\chi$ therefore gives exactly~\eqref{eq:move-count}
+moves.
+\end{proof}
+
+The theorem asserts neither uniqueness of the terminal, confluence, nor
+shortest distance among unrestricted firing paths.  A ``paired update'' is
+one physical firing whose defect potential changes at two lower states, not
+two simultaneous firings.

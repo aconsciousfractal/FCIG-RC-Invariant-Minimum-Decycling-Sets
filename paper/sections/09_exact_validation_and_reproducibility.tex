@@ -1,0 +1,29 @@
+\section{Exact finite assurance and reproducibility}
+\label{sec:validation}
+
+The proof above is deductive and alphabet-general.  The public executable
+capsule is deliberately restricted to the binary specialization: it
+reconstructs $k=2,4,6,8,10,12$ using exact cyclotomic
+coordinates, verifies one-per-PCR selection, residual acyclicity, the
+edgewise coboundary, every legal firing, and the final literal symmetry.
+Keeping this scope explicit avoids presenting a finite sample as evidence for
+an all-order or alphabet-general quantifier.
+
+Two implementations are used.  The producer represents exact coordinates in
+the appropriate quadratic or cyclotomic integer rings and uses Kahn's
+algorithm for the residual DAG.  The independent validator uses frozen exact
+coordinate tables and a recursive DFS DAG oracle; it does not import the
+producer.  Both reconstruct the complete scientific payload rather than
+comparing only summary counts.
+
+The panel reports six rows and 612 legal source firings.  Seven scientific
+mutations alter rotation, gradient, half-plane, ray, zero-tie, paired-update,
+or firing conventions; seven independent envelope mutations alter retained
+scientific fields.  Every mutation must be rejected.  Appendix
+\ref{app:finite} gives the finite table, and the repository documentation
+gives the exact replay commands and stable payload identity.
+
+This executable layer neither implements the direct $q$-ary membership
+algorithm of Corollary~\ref{cor:complexity} nor tests genomic data.  Those
+absences are intentional: the repository accompanies a mathematical article,
+not a sequence-analysis software release.
