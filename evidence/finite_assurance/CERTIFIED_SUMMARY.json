@@ -1,14 +1,69 @@
 {
   "schema": "FCIG_RC_MDS_FINITE_ASSURANCE_SUMMARY_V1",
   "claim_boundary": "BINARY_FINITE_CONVENTION_ASSURANCE_ONLY_NOT_A_QARY_OR_ALL_ORDER_PREMISE",
-  "orders": [2, 4, 6, 8, 10, 12],
+  "orders": [
+    2,
+    4,
+    6,
+    8,
+    10,
+    12
+  ],
   "order_rows": [
-    [2, 3, 0, 0, 0, 0, 0],
-    [4, 6, 3, 1, 1, 2, 1],
-    [6, 14, 5, 1, 2, 10, 5],
-    [8, 36, 6, 2, 2, 52, 26],
-    [10, 108, 9, 1, 4, 220, 110],
-    [12, 352, 19, 5, 7, 940, 470]
+    [
+      2,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    [
+      4,
+      6,
+      3,
+      1,
+      1,
+      2,
+      1
+    ],
+    [
+      6,
+      14,
+      5,
+      1,
+      2,
+      10,
+      5
+    ],
+    [
+      8,
+      36,
+      6,
+      2,
+      2,
+      52,
+      26
+    ],
+    [
+      10,
+      108,
+      9,
+      1,
+      4,
+      220,
+      110
+    ],
+    [
+      12,
+      352,
+      19,
+      5,
+      7,
+      940,
+      470
+    ]
   ],
   "row_columns": [
     "k",
@@ -22,5 +77,9 @@
   "total_legal_f_moves": 612,
   "scientific_mutations_rejected": 7,
   "envelope_mutations_rejected": 7,
-  "stable_scientific_payload_sha256": "3bbec32e9d37706e98db9bb61192d12653a6adb8f419a2f1e816b31cd664d9b5"
+  "stable_scientific_payload_sha256": "3bbec32e9d37706e98db9bb61192d12653a6adb8f419a2f1e816b31cd664d9b5",
+  "mathematical_inputs_sha256": {
+    "THEOREM_DERIVATION.md": "5f64d0091aa0d1b28273f5faa0496191f6f791ee86e8cac83264129081f0a3e1",
+    "VALIDATION_PROTOCOL.md": "19ed51233420723178307e606649c8efe8862b09906804af16e0ff4ab98ecfc0"
+  }
 }

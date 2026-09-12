@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Fail closed unless the distributable Git history is a clean single root."""
+"""Check a single-root local lineage and all reachable historical content."""
 
 from __future__ import annotations
 
@@ -49,15 +49,18 @@ def main() -> None:
     failures: list[str] = []
     try:
         commits = [line for line in str(git("rev-list", "--all")).splitlines() if line]
+        local_commits = [
+            line for line in str(git("rev-list", "--branches", "--tags")).splitlines() if line
+        ]
         roots = [
             line
-            for line in str(git("rev-list", "--max-parents=0", "--all")).splitlines()
+            for line in str(git("rev-list", "--max-parents=0", "--branches", "--tags")).splitlines()
             if line
         ]
-        if len(commits) != 1:
-            failures.append(f"reachable commit count is {len(commits)}, expected 1")
+        if not local_commits:
+            failures.append("no distributable local branch or tag commits")
         if len(roots) != 1:
-            failures.append(f"root commit count is {len(roots)}, expected 1")
+            failures.append(f"local branch/tag root count is {len(roots)}, expected 1")
 
         object_rows = [
             line for line in str(git("rev-list", "--objects", "--all")).splitlines() if line
@@ -98,8 +101,9 @@ def main() -> None:
             print(f"FAIL {failure}")
         raise SystemExit(1)
     print(
-        "PASS Git history single-root "
-        f"commits=1 reachable_objects={len(seen_objects)} listed_rows={len(object_rows)}"
+        "PASS Git history single-root local lineage; "
+        f"local_commits={len(local_commits)} all_reachable_commits={len(commits)} "
+        f"reachable_objects={len(seen_objects)} listed_rows={len(object_rows)}"
     )
 
 

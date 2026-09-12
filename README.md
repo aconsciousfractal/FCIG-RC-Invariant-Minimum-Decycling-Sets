@@ -19,7 +19,7 @@ Consequences include:
 - the DNA theorem for `A <-> T` and `C <-> G`;
 - exact even-order cardinality
   `N_q(k) = (1/k) sum_{d|k} phi(d) q^(k/d)`;
-- an odd-order symmetry premium of at least two;
+- an odd-order symmetry premium of at least `q` (two for binary, four for DNA);
 - a family of deterministic direct spectral selectors indexed by injective
   antisymmetric real weight maps;
 - polynomial-bit word membership for the integer-weight specialization, in
@@ -97,6 +97,11 @@ clinical, or blanket novelty/priority claim is made. See
 The author is Oleksiy Babanskyy (ORCID `0009-0001-6176-6208`). No affiliation,
 DOI, or journal venue is asserted. The repository is distributed under the MIT
 license; its third-party boundary is stated in `LICENSE_SCOPE.md`.
+
+Generative AI contributed to mathematical development, verification code,
+adversarial checks, and writing. The paper and `docs/AUTHORSHIP.md` disclose
+these roles. Distinct code implementations and AI-assisted review do not
+constitute independent specialist verification.
 
 ## Accessibility
 

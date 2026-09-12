@@ -32,8 +32,8 @@ OUTPUT = PACKAGE / "results" / "finite_assurance_validation.json"
 DERIVATION = PACKAGE / "THEOREM_DERIVATION.md"
 PROTOCOL = PACKAGE / "VALIDATION_PROTOCOL.md"
 FROZEN_INPUTS = {
-    "theorem_derivation": (DERIVATION, "e0eadfc08dee5d73d531e85223143fabf6ba9d9a434757c33a9a2286fd4dc25c"),
-    "validation_protocol": (PROTOCOL, "ad61f5da31940a33697ead9c82c3a235559d887907a4e21dd211b8c3eb57aea7"),
+    "theorem_derivation": (DERIVATION, "5f64d0091aa0d1b28273f5faa0496191f6f791ee86e8cac83264129081f0a3e1"),
+    "validation_protocol": (PROTOCOL, "19ed51233420723178307e606649c8efe8862b09906804af16e0ff4ab98ecfc0"),
 }
 
 

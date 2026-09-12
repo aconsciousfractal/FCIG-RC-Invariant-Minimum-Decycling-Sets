@@ -9,9 +9,9 @@ panel continues to exercise the same integer specialization and its
 scientific payload is therefore unchanged.
 
 - `THEOREM_DERIVATION.md` — q-ary all-order derivation, SHA-256
-  `e0eadfc08dee5d73d531e85223143fabf6ba9d9a434757c33a9a2286fd4dc25c`;
+  `5f64d0091aa0d1b28273f5faa0496191f6f791ee86e8cac83264129081f0a3e1`;
 - `VALIDATION_PROTOCOL.md` — SHA-256
-  `ad61f5da31940a33697ead9c82c3a235559d887907a4e21dd211b8c3eb57aea7`;
+  `19ed51233420723178307e606649c8efe8862b09906804af16e0ff4ab98ecfc0`;
 - `scripts/produce.py` — exact quadratic-ring coordinates and Kahn DAG test;
 - `scripts/validate.py` — literal exact tables and independent DFS DAG test.
 

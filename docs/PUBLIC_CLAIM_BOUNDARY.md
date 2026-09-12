@@ -9,7 +9,7 @@ complement and `q=|A|`.
    in `B(q,k)` exists if and only if `k` is even.
 2. At even `k`, the invariant minimum has ordinary cardinality `N_q(k)`.
 3. At odd `k>=3`, the symmetry-constrained minimum exceeds `N_q(k)` by at
-   least two.
+   least `q` (hence at least four for DNA).
 4. Every injective nonzero real weight map satisfying
    `s(bar(a))=-s(a)` supports the geometric seed, legal descent, and direct
    selector at even `k>=4`; integrality is not an existence hypothesis.

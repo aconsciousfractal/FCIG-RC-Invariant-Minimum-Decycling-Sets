@@ -26,3 +26,11 @@ the binary specialization through `k=12`, with two independent exact
 implementations and mutation controls. It is preserved because it exercises
 the delicate ray, gradient, zero-tie, and source-move conventions; it is not
 presented as evidence for an alphabet-general quantifier.
+
+The September 2026 revision makes one further consequence of the odd argument
+explicit: every complementary alphabet pair supplies two disjoint PCRs, each
+requiring a second deletion. The resulting premium is at least q, including
+at least four for DNA. This does not assert an exact odd minimum or require
+any conjectural equality between packing and covering quantities. The
+revision also adds the generative-AI disclosure and clarifies the relation
+between the parity question and the broader symmetric optimization problem.

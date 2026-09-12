@@ -3,13 +3,17 @@
 
 \begin{theorem}[Odd obstruction]
 \label{thm:odd}
-For every odd $k=2m+1\geq3$, no reverse-complement-invariant decycling set
-in $B(q,k)$ has cardinality $N_q(k)$.  Its cardinality exceeds $N_q(k)$ by
-at least two.
+For every odd $k=2m+1\geq3$, every reverse-complement-invariant decycling
+set $M$ in $B(q,k)$ satisfies
+\[
+  |M|\geq N_q(k)+q.
+\]
+In particular, ordinary minimum cardinality is impossible.
 \end{theorem}
 
 \begin{proof}
-Fix a complementary pair $a,\bar a$ and define the length-$2m$ lower states
+Let $M$ be such a set. Fix a complementary pair $a,\bar a$ and define the
+length-$2m$ lower states
 \[
   f_m=(a\bar a)^m,\qquad g_m=(\bar a a)^m.
 \]
@@ -22,25 +26,27 @@ proper $r$-fold power, then $r>1$ would divide both counts, contradicting
 $\gcd(m,m+1)=1$.  Its PCR therefore has full length $k$.
 
 In the lower-state graph this PCR contains the direct arc $g_m\to f_m$ and,
-through its other $k-1$ arcs, a directed path from $f_m$ to $g_m$.  A
-decycling set of cardinality $N_q(k)$ selects exactly one arc of this PCR.
-Deleting the direct arc leaves the long path; deleting any other arc leaves
-the direct path.  Thus one endpoint-to-endpoint direction survives.
+through its other $k-1$ arcs, a directed path from $f_m$ to $g_m$.  Denote
+this PCR by $C_a$. Every decycling set meets $C_a$. If $M$ selected exactly
+one arc of $C_a$, deleting the direct arc would leave the long path, while
+deleting any other arc would leave the direct path. Thus one
+endpoint-to-endpoint direction would survive.
 
-If the deletion set were reverse-complement invariant, the surviving path
-would have an image directed from the other fixed endpoint back to the first.
+By reverse-complement invariance of $M$, that surviving path would have an
+image directed from the other fixed endpoint back to the first.
 Their concatenation is a nonempty closed directed walk and contains a
 directed cycle, a contradiction.
 
-It remains to justify the stated gap.  At odd length no word is
-reverse-complement fixed, so every invariant set has even cardinality.
-Reverse complement also acts freely on the PCRs.  Indeed, suppose a PCR of
-odd minimal period $d$ were setwise stable, so that
-$\RC(w)=R^s w$ for some $s\in\mathbb Z/d\mathbb Z$.  On rotation indices
-reverse complement induces $r\mapsto s-r$.  Every reflection of an odd
-cycle has a fixed index, which would force the corresponding letter to equal
-its complement.  Therefore the PCRs occur in free pairs and $N_q(k)$ is
-even.  Strict excess over $N_q(k)$ is consequently at least two.
+Consequently $|M\cap C_a|\geq2$. The mate PCR $\RC(C_a)$ contains the
+same number of selected words. These two PCRs are distinct: their counts of
+$a$ and $\bar a$ are interchanged. Repeating the argument for each of the
+$q/2$ complementary alphabet pairs gives $q$ distinct PCRs, each requiring
+at least two selected words. PCRs from different alphabet pairs are disjoint
+because their words use disjoint sets of letters. Every other PCR still
+requires at least one selected word. Since PCRs partition $\A^k$,
+\[
+  |M|\geq 2q+\bigl(N_q(k)-q\bigr)=N_q(k)+q.
+\]
 \end{proof}
 
 The proof does not determine the exact odd excess; no formula inferred from

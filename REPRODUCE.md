@@ -90,7 +90,10 @@ From a repository clone, run:
 python scripts/check_git_history.py
 ```
 
-This verifies that the distributable history consists of one root commit and
-that no deleted non-public workflow material remains reachable. It is intentionally
-separate from archive verification because a source archive has no `.git`
-directory.
+This verifies that local branches and tags share one root; subsequent
+revision commits are allowed. Cached remote-tracking refs are not treated as
+local publication roots. The content scan still covers **all** reachable
+history, including those remote refs, and rejects the historical path and
+text classes documented in the checker. It does not prove absence of every
+possible semantic or encoded disclosure. History verification is separate
+from archive verification because a source archive has no `.git` directory.

@@ -1,6 +1,7 @@
 # Standalone Derivation of the q-ary RC-MDS Parity Theorem
 
 **Date:** 2026-08-16
+**Revision:** 2026-09-12 (disjoint odd obstructions)
 
 **Status:** `PUBLIC_SELF_CONTAINED_DERIVATION`
 
@@ -13,7 +14,7 @@ minimum decycling set if and only if `k` is even.
 
 The derivation also proves:
 
-- odd `k>=3` requires at least two more words than the ordinary minimum;
+- odd `k>=3` requires at least `q` more words than the ordinary minimum;
 - the exhibited monotone even-order descent has an exact firing count;
 - every injective antisymmetric real weight map gives a deterministic direct
   selector;
@@ -433,10 +434,20 @@ arcs from `f_m` to `g_m`. One selected word cannot destroy both directions.
 If the selected set were RC invariant, RC would supply a surviving return
 path, hence a residual cycle.
 
-No odd-length word is RC fixed, and no odd-period PCR is setwise RC stable:
-a reflection of an odd cycle has a fixed position, forcing a fixed alphabet
-letter. Thus both an invariant set and `N_q(k)` are even. The strict excess
-over the ordinary minimum is at least two.
+Write `C_a` for this PCR. Every decycling set meets it, and the preceding
+argument applies whenever an invariant set selects exactly one word from it,
+regardless of the set's total size. Hence it selects at least two words from
+`C_a` and, by symmetry, from `RC(C_a)`. These PCRs are distinct because the
+counts of `a` and `bar(a)` are interchanged. Distinct complementary alphabet
+pairs use disjoint letters, so their distinguished PCRs are all distinct.
+There are q such PCRs, each requiring two words, while all other PCRs require
+at least one. Thus
+
+```text
+|M| >= 2q + (N_q(k)-q) = N_q(k)+q.
+```
+
+This lower bound does not determine the exact odd premium.
 
 ## 13. Assembly and DNA
 
@@ -449,6 +460,8 @@ parity theorem holds for every finite fixed-point-free complemented alphabet.
 For DNA with `A<->T` and `C<->G`, an RC-invariant ordinary MDS exists exactly
 at even `k` and has cardinality `N_4(k)`. The weights `(-2,-1,1,2)` give one
 explicit construction.
+At odd `k>=3`, the same disjoint-obstruction count gives at least `N_4(k)+4`
+selected words.
 
 ## 14. Nonclaims
 

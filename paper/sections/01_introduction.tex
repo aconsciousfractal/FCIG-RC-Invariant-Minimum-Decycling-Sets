@@ -11,8 +11,14 @@ different constraint: whenever a word is chosen, its reverse complement must
 also be chosen.  This is the natural strand symmetry for DNA and was posed
 directly in the k-nonical setting \cite{MarcaisElderKingsford2024}.
 
-We settle the ordinary-minimum existence question over every complemented
-alphabet.
+In Section~5.1 of \cite{MarcaisElderKingsford2024}, the authors identify
+the lack of known algorithms for symmetric MDSs; Section~6 also notes the
+unknown symmetric minimum size. We answer the following existence part of
+that problem: for which word lengths can literal reverse-complement
+symmetry attain the ordinary minimum? The answer below classifies every
+fixed-point-free complemented alphabet. It does not determine the exact
+odd-order constrained minimum or solve the additional path-length
+optimization in that work.
 
 \begin{theorem}[Parity theorem]
 \label{thm:parity}
@@ -31,7 +37,9 @@ $k$ is odd.
 The two directions use different mechanisms.  At odd order, a primitive
 pure-rotation cycle has two reverse-complement-fixed lower endpoints.  One
 deletion from that cycle cannot destroy both endpoint-to-endpoint directions,
-and reverse complement supplies the opposing residual path.  At even order,
+and reverse complement supplies the opposing residual path. Counting this
+obstruction over disjoint alphabet pairs gives at least $q$ additional
+deletions. At even order,
 we assign distinct nonzero real weights $s(a)$ satisfying
 $s(\bar a)=-s(a)$.  A weighted cyclotomic version of the classical selector
 then has an exact reverse-complement defect equal to the gradient of an open

@@ -11,6 +11,9 @@ the DNA corollary in Section 8.
 ## 2. Audit the delicate proof points
 
 - The complement is an involution with no fixed alphabet symbol.
+- In the odd lower bound, each complementary alphabet pair contributes two
+  distinct PCRs requiring two deletions each; all q distinguished PCRs are
+  disjoint. No resource is counted twice.
 - The construction-level weight map is real, injective, nonzero, and
   antisymmetric; the polynomial-bit corollary separately assumes integer
   weights with a finite binary encoding.
@@ -61,3 +64,7 @@ membership corollary.
 The hashes authenticate bytes. The finite rows check conventions. Neither
 function supplies a novelty opinion, an all-order proof, or a biological
 benchmark.
+
+The agreement of separate implementations and the AI-assisted internal
+review do not themselves establish independent expert verification of the
+uniform proof. The AI roles are disclosed in the article and authorship note.

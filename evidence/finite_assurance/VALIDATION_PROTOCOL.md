@@ -1,7 +1,7 @@
 # Exact Binary-Specialization Validation Protocol
 
 **Date:** 2026-08-12
-**Mathematical-input revision:** 2026-08-16
+**Mathematical-input revision:** 2026-09-12
 **Status:** `EXECUTED_AND_CROSS_VALIDATED`
 
 ## 1. Purpose and boundary
@@ -18,13 +18,13 @@ The mathematical input is:
 
 ```text
 THEOREM_DERIVATION.md
-SHA-256 e0eadfc08dee5d73d531e85223143fabf6ba9d9a434757c33a9a2286fd4dc25c
+SHA-256 5f64d0091aa0d1b28273f5faa0496191f6f791ee86e8cac83264129081f0a3e1
 ```
 
-The revision widens the proof-level weight domain from integers to reals
-while keeping the polynomial-bit corollary and this executable panel on the
-same integer specialization.  Consequently the finite scientific payload is
-unchanged.
+The August revision widened the proof-level weight domain from integers to
+reals. The September revision counts the odd obstruction separately over
+complementary alphabet pairs, giving a lower bound q on the odd premium.
+Neither change alters this binary even-order panel or its scientific payload.
 
 ## 2. Exact panel
 

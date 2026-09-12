@@ -30,6 +30,6 @@ membership complexity bound.
 
 Current mathematical-input identities:
 
-- theorem derivation: `e0eadfc08dee5d73d531e85223143fabf6ba9d9a434757c33a9a2286fd4dc25c`;
-- binary validation protocol: `ad61f5da31940a33697ead9c82c3a235559d887907a4e21dd211b8c3eb57aea7`;
+- theorem derivation: `5f64d0091aa0d1b28273f5faa0496191f6f791ee86e8cac83264129081f0a3e1`;
+- binary validation protocol: `19ed51233420723178307e606649c8efe8862b09906804af16e0ff4ab98ecfc0`;
 - stable binary scientific payload: `3bbec32e9d37706e98db9bb61192d12653a6adb8f419a2f1e816b31cd664d9b5`.
